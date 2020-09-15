@@ -18,7 +18,9 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static("public"));
 
 app.get("/", function(req,res){
-  res.render("home", {homeStartingContent: homeStartingContent});
+//JSON.stringify(posts)
+  res.render("home", {homeStartingContent: homeStartingContent,
+  posts:posts});
 });
 app.get("/about", function(req,res){
   res.render("about", {aboutContent: aboutContent});
@@ -29,6 +31,9 @@ app.get("/contact", function(req,res){
 app.get("/compose", function(req,res){
   res.render("compose");
 });
+app.get("/posts/:postName", function(req,res){
+  console.log(req.params.postName);
+})
 app.post("/compose", function(req,res){
   const post = {
     postTitle:req.body.postTitle,
@@ -36,7 +41,6 @@ app.post("/compose", function(req,res){
   };
   posts.push(post);
   res.redirect("/");
-  console.log(posts);
 })
 app.listen(3000, function() {
   console.log("Server started on port 3000");
