@@ -3,6 +3,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const ejs = require("ejs");
+const _ = require('lodash');
 
 let posts = [];
 
@@ -32,7 +33,18 @@ app.get("/compose", function(req,res){
   res.render("compose");
 });
 app.get("/posts/:postName", function(req,res){
-  console.log(req.params.postName);
+  const requestedTitle = _.lowerCase(req.params.postName);
+  posts.forEach(function(post){
+    const storedTitle = _.lowerCase(post.postTitle);
+    if(storedTitle === requestedTitle){
+      res.render("post", {postTitle:post.postTitle,
+        postBody:post.postBody
+    });
+       }
+       else{
+         console.log("Page not found!");
+       }
+  })
 })
 app.post("/compose", function(req,res){
   const post = {
