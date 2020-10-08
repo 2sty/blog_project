@@ -22,6 +22,28 @@ const postSchema = new mongoose.Schema({
 
 const Post = mongoose.model("Post", postSchema);
 
+const userSchema = new mongoose.Schema(({
+  name:String,
+  password:String,
+  status:Boolean
+}))
+
+const User = mongoose.model("User", userSchema);
+
+User.find({}, function(err, foundItems){
+  if(err){
+    console.log(err);
+  }else{
+    if(foundItems.length === 0){
+      const user = new User({
+        name:"admin",
+        password:"admin",
+        status:false
+      });
+      user.save();
+    }
+  }
+});
 const app = express();
 
 app.set('view engine', 'ejs');
@@ -50,6 +72,53 @@ app.get("/contact", function(req,res){
 app.get("/compose", function(req,res){
   res.render("compose");
 });
+app.get("/delete/:postId", function(req,res){
+  const postId = req.params.postId
+  Post.findByIdAndRemove(postId, function(err){
+    if(!err){
+      console.log("Item has been removed.");
+      res.redirect("/admin");
+    }
+  })
+});
+app.get("/admin", function(req,res){
+  const userName = req.params.userName;
+
+  User.findOne({name:"admin"}, function(err,foundList){
+    if(!err){
+      if(foundList.status == true){
+        Post.find({}, function(err, foundPosts){
+        if(err){
+          console.log(err);
+        }else{
+            res.render('admin', {
+              posts:foundPosts,
+            });
+          }
+        });
+      }else{
+        res.redirect("/signin");
+        console.log("Nie masz uprawnień!");
+      }
+    }else{
+      console.log("Err /adm");
+    }
+  });
+});
+app.get("/signin", function(req,res){
+  User.findOne({name:"admin", status:true}, function(err,foundList){
+      if(!err){
+        if(foundList != null){
+          res.redirect('/admin')
+        }else{
+          res.render('signin');
+        }
+      }else{
+        console.log("Err");
+      }
+    });
+
+});
 app.get("/posts/:postId", function(req,res){
   const postId = req.params.postId;
   Post.findOne({_id:postId}, function(err,foundPost){
@@ -61,7 +130,30 @@ app.get("/posts/:postId", function(req,res){
     }
 });
 });
-
+app.post("/login", function(req,res){
+  console.log(req.body);
+  const userName = req.body.userName;
+  const userPswd = req.body.userPswd;
+  User.findOne({name:userName,password:userPswd}, function(err,foundList){
+      if(!err){
+        if(foundList != null){
+          User.findOneAndUpdate({name:userName}, {status:true}, function(err){
+          console.log("Zmieniono!");
+          })
+          res.redirect("/admin");
+        }else{
+          res.redirect("/signin")
+        }
+      }else{
+        console.log("Nima");
+      }
+    });
+});
+app.get("/logout", function(req,res){
+  User.findOneAndUpdate({name:"admin"}, {status:false}, function(err){
+  res.redirect("/");
+  })
+})
 app.post("/compose", function(req,res){
   const postTitle = req.body.postTitle;
   const postBody = req.body.postBody;

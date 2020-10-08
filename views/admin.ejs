@@ -1,0 +1,10 @@
+<%- include('partials/header'); -%>
+<h1>Admin panel</h1>
+<h3>All posts</h3>
+<% posts.forEach(function(post){ %>
+  <p><%= post.title %><a class="delete"<a href="/delete/<%= post._id %>">Delete</a></p>
+<% }) %>
+<hr />
+<a class="btn btn-primary" href="/compose" role="button">Compose</a>
+<a class="btn btn-danger" href="/logout" role="button">Logout</a>
+<%- include('partials/footer'); -%>

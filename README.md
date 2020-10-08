@@ -5,6 +5,8 @@ Used technologies:
 css, html, js, ejs, node.js, mongoose, express.js,
 
 Functionality:
-- you can simply add new post "/compose",
-- all the posts are saved on mongodb
-s
+- you can simply add new post using admin page,
+- admin page includes deleting posts,
+
+
+admin:admin
