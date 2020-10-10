@@ -1,23 +1,26 @@
 <%- include('partials/header'); -%>
-<div class="heading">
-  <h1>arek's daily stories.</h1>
-</div>
-</div>
+<section id="heading">
+  <div class="container-fluid">
+    <div class="heading">
+      <h1>arek's daily stories.</h1>
+    </div>
+  </div>
 </section>
 
 <body>
-<div class="container">
-  <section class="white-section" id="description">
+
+  <section id="description">
     <div class="container-fluid">
       <div class="row">
         <% posts.forEach(function(post){ %>
-        <div class="description-box col-lg-6 col-md-12">
+        <div class="description-box col-lg-4 col-md-6">
           <div class="card">
           <div class="card-header">
-            <h3><%= post.title %></h3>
+            <h3><a href="/posts/<%= post._id %>" role="button"><%= post.title %></a></h3>
+
           </div>
           <div class="card-body">
-            <%= post.body.substring(0,300); %> ... <a href="/posts/<%= post._id %>">Read me</a>
+            <%= post.body.substring(0,300); %> ...
           </div>
         </div>
         </div>

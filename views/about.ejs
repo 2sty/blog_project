@@ -1,7 +1,25 @@
 <%- include('partials/header'); -%>
-<div class="container">
-<h1>About</h1>
-<p>
-  <%= aboutContent %>
-</p>
+
+<section id="about">
+  <div class="container-fluid">
+    <div class="others">
+      <h1>about me.</h1>
+    </div>
+  </div>
+</section>
+
+<body>
+<section id="others">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="description-box col-12">
+        <div class="card">
+        <div class="card-body">
+          <%= aboutContent %>
+        </div>
+      </div>
+      </div>
+    </div>
+  </div>
+</section>
 <%- include('partials/footer'); -%>
