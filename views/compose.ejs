@@ -1,15 +1,35 @@
 <%- include('partials/header'); -%>
-<div class="container">
-<h1>Compose</h1>
-<form class="publish" action="/compose" method="post">
-<div class="form-group">
+<section id="compose">
+  <div class="container-fluid">
+    <div class="others-title">
+      <h1>compose.</h1>
+    </div>
+  </div>
+</section>
 
-    <label>Title</label>
-    <input class="form-control" type="text" name="postTitle" value="">
-    <label>Post</label>
-    <textarea name="postBody" class="form-control" rows="5"></textarea>
+<body>
+<section id="admin-body">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="description-box col-12">
+        <form class="publish" action="/compose" method="post">
+        <div class="form-group">
 
-</div>
-<button class="btn btn-primary" type="submit" name="button">Publish</button>
-  </form>
+            <label>title</label>
+            <input class="form-control" type="text" name="postTitle" value="">
+            <label>post</label>
+            <textarea name="postBody" class="form-control" rows="5"></textarea>
+            <label>category</label>
+            <input class="form-control" type="text" name="postCategory" value="">
+            <label>author</label>
+            <input class="form-control" type="text" name="postAuthor" value="">
+
+        </div>
+        <button class="btn btn-primary" type="submit" name="button">Publish</button>
+
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
 <%- include('partials/footer'); -%>

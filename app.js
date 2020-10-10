@@ -17,7 +17,9 @@ mongoose.set('useFindAndModify', false);
 //Post Schema
 const postSchema = new mongoose.Schema({
   title:String,
-  body:String
+  category:String,
+  body:String,
+  author:String
 });
 
 const Post = mongoose.model("Post", postSchema);
@@ -157,9 +159,13 @@ app.get("/logout", function(req,res){
 app.post("/compose", function(req,res){
   const postTitle = req.body.postTitle;
   const postBody = req.body.postBody;
+  const postCategory = req.body.postCategory;
+  const postAuthor = req.body.postAuthor;
   const post = new Post({
         title: postTitle,
-        body: postBody
+        body: postBody,
+        category:postCategory,
+        author:postAuthor
       });
   post.save(function(err){
   if (!err){

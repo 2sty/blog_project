@@ -5,73 +5,40 @@ body{
   font-family: "Epilogue";
   padding-bottom: 58px;
 }
-#heading{
-  background-image: url("../img/landscape.jpg");
-  background-attachment: fixed;
-  background-size: cover;
-}
-#title .container-fluid {
-    padding: 0% 0%;
-    text-align: left;
-}
-.heading{
-  padding: 15% 0 15% 0;
-  text-align: center;
-}
-.heading h1{
-  font-weight: bold;
-  margin: auto;
+h1{
   background-color: white;
   width: 500px;
   height: 70px;
   vertical-align: middle;
   line-height: 70px;
 }
-.others{
-  padding: 8% 0 8% 0;
-  text-align: center;
-
+/* Headings background*/
+#heading, #post, #about, #contact, #admin, #compose{
+  background-attachment: fixed;
+  background-size: cover;
+}
+#admin{
+  background-image: url("../img/admin.jpg");
+}
+#heading{
+  background-image: url("../img/landscape.jpg");
 }
 #post{
   background-image: url("../img/journey.jpg");
-  background-attachment: fixed;
-  background-size: cover;
 }
 #about{
-  background-image: url("../img/about.jpg");
-  background-attachment: fixed;
-  background-size: cover;
+  background-image: url("../img/about2.jpg");
 }
 #contact{
   background-image: url("../img/contact.jpg");
-  background-attachment: fixed;
-  background-size: cover;
 }
-.others h1{
-  margin-left: 85px;
-  font-weight: bold;
-  background-color: white;
-  width: 500px;
-  height: 70px;
-  vertical-align: middle;
-  line-height: 70px;
+#compose{
+  background-image: url("../img/compose.jpg");
 }
-#others .card-body{
-  color:black;
-}
-#others .container-fluid{
-  padding: 30px 100px 10px;
-}
-#signin .container-fluid{
-  background-color: white;
-  color:white;
-}
-#signin .others{
-  padding: 5% 0 5% 0;
-}
-#signin h1{
-  margin: auto;
-  background-color: black;
+/* Nabar */
+#nav .container-fluid {
+    padding: 0 0;
+    text-align: left;
 }
 .navbar{
   font-weight: 300;
@@ -96,7 +63,59 @@ body{
   color:black !important;
   padding: 0 60px;
 }
+/* Home heading */
+.heading{
+  padding: 15% 0 15% 0;
+  text-align: center;
+}
+.heading h1{
+  font-weight: bold;
+  margin: auto;
+}
+/* Headings */
+.others-title{
+  padding: 8% 0 8% 0;
+  text-align: center;
+}
+.others-title h1{
+  margin-left: 85px;
+  font-weight: bold;
+}
 
+#others .card-body{
+  color:black;
+}
+#others .container-fluid{
+  padding: 30px 100px 10px;
+}
+#signin .container-fluid{
+  background-color: white;
+  color:white;
+}
+#signin .others-title{
+  padding: 5% 0 5% 0;
+}
+#signin h1{
+  margin: auto;
+  background-color: black;
+}
+#others .btn{
+  color: white;
+}
+
+#admin-body .card-body{
+  color:black;
+}
+#admin-body .container-fluid{
+  padding: 30px 100px 10px;
+}
+#admin-body .btn{
+  color:white;
+}
+#admin-body .card{
+  min-height: 0;
+}
+/* Footer */
 .footer {
   padding: 20px;
   position: absolute;
@@ -107,9 +126,12 @@ body{
   text-align: center;
 }
 
+
 .delete{
   padding-left: 10px;
+  color: #dc3545 !important;
 }
+/* Post box on home page */
 #description{
   text-align: center;
   margin-bottom: 20px;
@@ -143,11 +165,21 @@ body{
   margin-top: 10px;
   font-weight: 700;
 }
+.card-header span{
+  color:#8f8f8f;
+  font-weight: 200;
+  letter-spacing: 2px;
+}
 .card-body{
   padding: 1.25rem;
-  font-weight: 300;
-  color:#8f8f8f;
+  font-weight: 200;
+  color:black;
   line-height: 2rem;
+}
+#author{
+  text-align: left;
+  color:#8f8f8f;
+  padding-top: 2rem;
 }
 /* Mobile */
 @media (max-width: 992px){
@@ -218,7 +250,10 @@ body{
 .form-signin input[type="password"] {
   margin-bottom: 10px;
 }
-.btn[type="submit"]{
+.form-group input[type="text"],.form-group textarea{
+  margin-bottom: 5px;
+}
+.btn{
   border-radius: 0;
 }
 .sign{
