@@ -55,7 +55,7 @@ h1{
   padding-right: 50px;
 }
 .nav-item{
-  padding: 0 10px;
+  padding: 0 1.5rem;
 }
 .navbar-brand {
   font-weight:700;
@@ -160,6 +160,11 @@ h1{
   border-radius: 0;
   background-color: white;
   border: none;
+  position: relative;
+}
+#author{
+  position: absolute;
+  bottom: 1rem;
 }
 .card-header h3{
   margin-top: 10px;
@@ -171,7 +176,7 @@ h1{
   letter-spacing: 2px;
 }
 .card-body{
-  padding: 1.25rem;
+  padding: 1.25rem 1.25rem 3rem;
   font-weight: 200;
   color:black;
   line-height: 2rem;
@@ -204,19 +209,42 @@ h1{
   .testimonial-text{
     font-size: 1.8rem;
   }
-  .nav-link{}
-  em{
-    font-size: 0.8rem;
-  } */
-  .nav-item{
-    padding: 0 60px;
-  }
+  */
+
   .description-box{
     padding-bottom: 15px;
   }
   /* #tools{
     min-height: 40vh;
   } */
+}
+@media (max-width: 768px){
+  .others-title h1{
+    margin-left: 0;
+  }
+  #others .container-fluid {
+    padding: 1rem 2rem 1rem;
+}
+#description .container-fluid {
+    padding: 1rem 2rem 1rem;
+}
+#admin-body .container-fluid{
+  padding: 1rem 2rem 1rem;
+}
+.container-fluid{
+  padding: 0;
+}
+#heading, #post, #about, #contact, #admin, #compose{
+background-attachment: inherit;
+padding: 1rem 2rem 1rem;
+}
+h1{
+  font-size: 1.75rem;
+  width: auto;
+}
+#signin .others-title {
+    padding: 0 0 0 0;
+}
 }
 /* SIGN IN STYLE */
 .form-signin {
